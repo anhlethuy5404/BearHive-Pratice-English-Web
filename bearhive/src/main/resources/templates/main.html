@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=0.1">
+        <title>BearHive - English Practice</title>
+        <link rel="stylesheet" th:href="@{../css/main.css}">
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav-container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <img th:src="@{/image/bear/bear-toy-2.png}" alt="LearnEnglish Logo">
+                        <span>BearHive</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">English Test</a>
+                        <a href="#">Flashcard</a>
+                        <button class="login-btn">Login</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    
+        <main class="main-content">
+            <section class="hero">
+                <div class="hero-text">
+                    <h1>Chào mừng bạn đến với BearHive</h1>
+                    <p>Bạn đang tìm kiếm một phương pháp học tiếng Anh hiệu quả và thú vị?</p>
+                    <p>Tại đây, chúng tôi mang đến cho bạn những bài học sinh động, bài tập thực hành đa dạng, cùng kho tài liệu phong phú phù hợp với mọi trình độ.</p>
+                    <p>Dù bạn mới bắt đầu hay muốn nâng cao trình độ, BearHive sẽ đồng hành cùng bạn trên hành trình chinh phục tiếng Anh.</p>
+                    <button class="cta-btn">Bắt đầu học ngay hôm nay!</button>
+                </div>
+                <div class="hero-image">
+                    <img th:src="@{/image/bear/angel.png}">
+                </div>
+            </section>
+    
+            <section class="tests">
+                <h2>Popular English Tests</h2>
+                <div class="test-grid">
+                    <div class="test-card">
+                        <h3>Grammar Mastery</h3>
+                        <span class="badge">Beginner</span>
+                        <p>Master essential English grammar rules through interactive exercises.</p>
+                        <button>Start Test</button>
+                    </div>
+    
+                    <div class="test-card">
+                        <h3>Vocabulary Builder</h3>
+                        <span class="badge">Intermediate</span>
+                        <p>Expand your vocabulary with our comprehensive word lists.</p>
+                        <button>Start Test</button>
+                    </div>
+    
+                    <div class="test-card">
+                        <h3>Speaking Practice</h3>
+                        <span class="badge">Advanced</span>
+                        <p>Improve your pronunciation and speaking skills with AI-powered feedback.</p>
+                        <button>Start Test</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
