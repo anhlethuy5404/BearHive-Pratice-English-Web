@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/image/bg/hinh-nen-mau-vang-cute-2.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.message {
+    position: fixed; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 15px 40px 15px 50px; 
+    border-radius: 10px;
+    opacity: 0; 
+    transform: translate(-50%, -20px); 
+    animation: slideDown 0.5s ease forwards; 
+    z-index: 1000; 
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.message.success {
+    background-color: #e6ffe6; 
+    border: 2px solid #00cc00;
+    color: #006600;
+}
+
+.message.success::before {
+    content: "✔"; 
+    position: absolute;
+    left: 20px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00cc00; 
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.message.error {
+    background-color: #ffe6e6;
+    border: 2px solid #cc0000;
+    color: #660000;
+}
+
+.message.error::before {
+    content: "✗"; 
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #cc0000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.message:empty {
+    display: none;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #fbc02d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f9a825;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #555;
+}
+
+a {
+    color: #fbc02d;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
