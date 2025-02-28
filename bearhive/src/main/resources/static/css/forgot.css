@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Container chính */
+.container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #fefcbf, #fef08a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+/* Form box */
+.form-box {
+    max-width: 448px;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    space: 24px;
+}
+
+/* Text center */
+.text-center {
+    text-align: center;
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+    margin: 0 auto 16px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #4b5563;
+    margin-bottom: 24px;
+}
+
+/* Form */
+.form-space {
+    space: 16px;
+}
+
+/* Input group */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border: 2px solid #fcd34d;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+/* Error message */
+.error-message {
+    display: none;
+    align-items: center;
+    margin-top: 8px;
+    color: #ef4444;
+    font-size: 14px;
+}
+
+.error-message::before {
+    content: "⚠";
+    margin-right: 4px;
+}
+
+.error-message.show {
+    display: flex;
+}
+
+/* Button group */
+.button-group {
+    space: 12px;
+}
+
+.submit-btn, .sms-btn {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.submit-btn {
+    background: #facc15;
+    color: #1f2937;
+    border: none;
+}
+
+.submit-btn:hover {
+    background: #eab308;
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sms-btn {
+    background: white;
+    border: 2px solid #facc15;
+    color: #1f2937;
+}
+
+.sms-btn:hover {
+    background: #fefce8;
+}
+
+/* Links */
+.links {
+    space: 16px;
+}
+
+.support-link, .return-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.support-link {
+    color: #d97706;
+    font-weight: 500;
+}
+
+.support-link:hover {
+    color: #b45309;
+}
+
+.return-link {
+    color: #4b5563;
+    display: inline-flex;
+    align-items: center;
+}
+
+.return-link:hover {
+    color: #1f2937;
+}
+
+/* Footer text */
+.footer-text {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.policy-links {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}
+
+.policy-links a {
+    color: #d97706;
+}
+
+.policy-links a:hover {
+    color: #b45309;
+}

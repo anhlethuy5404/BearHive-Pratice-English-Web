@@ -13,13 +13,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
             .requestMatchers("/admin/**").hasAuthority("ADMIN")
             .requestMatchers("/user/**").hasAuthority("USER")
-            .requestMatchers("/", "/signup").permitAll()
+            .requestMatchers("/**").permitAll()
             .requestMatchers("/css/**", "/image/**", "/js/**").permitAll()
             .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-                .loginPage("/login")
-                .permitAll()
             )
             .logout(logout -> logout.permitAll());
         return http.build();

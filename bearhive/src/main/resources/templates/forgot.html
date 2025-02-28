@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery</title>
+    <link rel="stylesheet" th:href="@{css/forgot.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="text-center">
+                <img src="https://images.unsplash.com/photo-1633409361618-c73427e4e206" alt="Logo" class="logo">
+                <h2>Password Recovery</h2>
+                <p>Enter your email to receive recovery instructions</p>
+            </div>
+
+            <form id="recovery-form" class="form-space">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <span class="icon">✉️</span>
+                        <input type="email" id="email" placeholder="Enter your registered email" required>
+                    </div>
+                    <div id="error-message" class="error-message">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        Send Recovery Link
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-center links">
+                <a href="#" class="support-link">Contact Support</a>
+                <a href="/login" class="return-link">
+                    ⬅ Return to Login
+                </a>
+            </div>
+
+            <div class=" footer-text">
+                <p>By continuing, you agree to our</p>
+                <div class="policy-links">
+                    <a href="#">Terms of Service</a>
+                    <span>and</span>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
