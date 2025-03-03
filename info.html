@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
+        <link rel="stylesheet" href="info.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="profile-layout">
+                <div class="menu-section">
+                    <nav class="menu">
+                        <input type="radio" name="tab" id="info" value="info" checked hidden>
+                        <label for="info" class="menu-item">
+                            <i class="fa fa-info-circle"></i>
+                            <span class="label">Thông tin</span>
+                        </label>
+    
+                        <input type="radio" name="tab" id="history" value="history" hidden>
+                        <label for="history" class="menu-item">
+                            <i class="fa fa-history"></i>
+                            <span class="label">Lịch sử hoạt động</span>
+                        </label>
+                    </nav>
+                </div>
+
+                <div class="content-section">
+                    <div class="content" id="info-content">
+                        <div class="content-inner">
+                            <h2>Thông tin cá nhân</h2>
+                            <p>Nội dung</p>
+                        </div>
+                    </div>
+                    <div class="content" id="history-content">
+                        <div class="content-inner">
+                            <h2>Lịch sử hoạt động</h2>
+                            <p>Lịch sử</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="user-info-section">
+                    <div class="user-info">
+                        <div class="avatar-wrapper">
+                            <img src="3f9470b34a8e3f526dbdb022f9f19cf7.jpg" alt="User avatar" class="avatar">
+                        </div>
+                        <h1>Nguyen Van A</h1>
+                        <div class="birthday">
+                            <i class="fa fa-birthday-cake"></i>
+                            <span>01/01/2000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
