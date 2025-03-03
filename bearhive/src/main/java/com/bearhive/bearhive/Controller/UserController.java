@@ -13,6 +13,8 @@ import com.bearhive.bearhive.Model.User;
 import com.bearhive.bearhive.Repository.UserRepository;
 import com.bearhive.bearhive.Service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 
 
 @Controller
@@ -47,13 +49,21 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginForm(@RequestParam("email") String email, @RequestParam("password") String password, RedirectAttributes redirectAttributes) {
-        User user = userService.loginUser(email, password);
+    public String loginForm(@RequestParam("email") String email, @RequestParam("password") String password, RedirectAttributes redirectAttributes, HttpSession session) {
+        User user = userService.loginUser(email, password, session);
         if (user == null) {
             redirectAttributes.addFlashAttribute("message", "Email hoặc mật khẩu không đúng!");
             return "redirect:/login";  
         }
+        session.setAttribute("loggedUser", user);
         return "redirect:/home";   
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/home";  
+    }
+    
     
 }

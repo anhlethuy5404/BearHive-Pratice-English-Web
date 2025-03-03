@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.bearhive.bearhive.Model.User;
 import com.bearhive.bearhive.Repository.UserRepository;
+import com.bearhive.bearhive.Util.AvatarUtil;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class UserService {
@@ -24,10 +27,17 @@ public class UserService {
         return userRepository.save(user);
     }
     
-    public User loginUser(String email, String password) {
+    public User loginUser(String email, String password, HttpSession session) {
         Optional<User> existedUser = userRepository.findByEmail(email);
         if (existedUser.isPresent() && existedUser.get().getPassword().equals(password)) {
-            return existedUser.get();
+            User user = existedUser.get();
+            if (user.getAvatar() == null || user.getAvatar().isEmpty()) {
+                String randomAvt = AvatarUtil.getRandomAvatar();
+                user.setAvatar(randomAvt);
+                userRepository.save(user);
+            }
+            session.setAttribute("loggedUser", user);
+            return user;
         }
         return null;
     }

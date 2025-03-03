@@ -18,7 +18,19 @@
                         <a href="#">Home</a>
                         <a href="#">English Test</a>
                         <a href="#">Flashcard</a>
-                        <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+                        <div th:if="${session.loggedUser}" class="user-info">
+                            <img th:src="@{${session.loggedUser.avatar}}" class="avatar">
+                            <div class="dropdown">
+                                <span class="user-name" onclick="toggleMenu()">
+                                    <span class="" th:text="${#strings.arraySplit(session.loggedUser.fullname, ' ')[#strings.arraySplit(session.loggedUser.fullname, ' ').length - 1]}"></span>
+                                </span>
+                                <div class="dropdown-menu" id="dropdown-menu">
+                                    <a href="#">Thông tin cá nhân</a>
+                                    <a href="/logout">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button th:unless="${session.loggedUser}" class="login-btn" onclick="window.location.href='/login'">Login</button>
                     </div>
                 </div>
             </nav>
@@ -64,5 +76,17 @@
                 </div>
             </section>
         </main>
+
+        <script>
+            function toggleMenu() {
+                document.querySelector(".dropdown-menu").classList.toggle("show");
+            }
+            document.addEventListener("click", function(event) {
+                const dropdown = document.querySelector(".dropdown");
+                if(!dropdown.contains(event.target)) {
+                    document.querySelector(".dropdown-menu").classList.remove("show");
+                }
+            });
+        </script>
     </body>
 </html>

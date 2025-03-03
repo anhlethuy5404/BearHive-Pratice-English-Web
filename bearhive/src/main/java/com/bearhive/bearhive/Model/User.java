@@ -13,6 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullname, password, email, role;
+    private String avatar;
 
     public User() {}
     
@@ -52,5 +53,11 @@ public class User {
     }
     public void setRole(String role) {
         this.role = role;
+    }
+    public String getAvatar() {
+        return avatar;
+    }
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

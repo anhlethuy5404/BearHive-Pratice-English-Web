@@ -3,7 +3,7 @@ body {
     background-color: #FFFBEB;
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 18px;
 }
 .header {
     background-color: white;
@@ -23,14 +23,24 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.logo {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .logo img {
-    height: 48px;
+    height: 42px;
 }
 .logo span {
-    font-size: 24px;
+    font-size: 28px;
     color: #D97706;
     font-weight: bold;
     margin-left: 10px;
+}
+.nav-links {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .nav-links a {
     margin-right: 20px;
@@ -40,6 +50,16 @@ body {
 }
 .nav-links a:hover {
     color: #D97706;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 .login-btn {
     background-color: #FBBF24;
@@ -52,6 +72,51 @@ body {
 .login-btn:hover {
     background-color: #D97706;
 }
+.user-name {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    color: #4B5563;
+}
+.user-name:hover {
+    color: #D97706;
+}
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #4B5563;
+    margin: auto;
+}
+
+.dropdown-menu a:hover {
+    background: #FBBF24;
+    color: white;
+}
+
+.show {
+    display: block;
+}
+
 .main-content {
     padding-top: 80px;
 }
