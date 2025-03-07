@@ -13,21 +13,46 @@
         <h2>Create Account</h2>
         <p>Please fill in your details</p>
         <form th:action="@{/signup}" method="post" role="form" th:object="${user}">
-            <label for="fullName">Full Name</label>
-            <input th:field="*{fullname}" type="text" name="fullname" id="fullName" placeholder="Enter your full name" required>
-
+            <div class="row">
+                <div class="column">
+                    <label for="fullName">Full Name</label>
+                    <input th:field="*{fullname}" type="text" name="fullname" id="fullName" placeholder="Enter your full name" required>
+                </div>
+                <div class="column">
+                    <label for="location">Location</label>
+                    <select th:field="*{location}" required>
+                        <th:block th:replace="fragments/provinces :: provinceOptions"></th:block>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="column">
+                    <label for="birthday">Birthday</label>
+                    <input th:field="*{birthday}" type="date" name="birthday" required>
+                </div>
+                <div class="column">
+                    <label for="gender">Gender</label>
+                    <select th:field="*{gender}" id="gender" name="gender" required>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+            </div>
+        
             <label for="signupEmail">Email Address</label>
             <input th:field="*{email}" type="email" name="email" id="signupEmail" placeholder="Enter your email" required>
-
+        
             <label for="signupPassword">Password</label>
             <input th:field="*{password}" type="password" name="password" id="signupPassword" placeholder="Create a password" required>
-
+        
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
-
+        
             <button type="submit">Create Account</button>
             <p>Already have an account? <a href="/login">Sign In</a></p>
-        </form>
+        </form>        
     </div>
 
     <div class="cloud-image">

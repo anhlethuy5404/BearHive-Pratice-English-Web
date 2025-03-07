@@ -94,6 +94,18 @@ form {
     gap: 10px;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; 
+}
+
+.column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
 label {
     text-align: left;
     font-weight: bold;
@@ -101,11 +113,31 @@ label {
 
 input[type="email"],
 input[type="password"],
+input[type="date"],
 input[type="text"] {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-family: Arial, sans-serif;
 }
+input:focus {
+    outline: none;
+    border-color: #FBBF24;
+    border-width: 2px;
+}
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #FBBF24;
+    border-width: 2px;
+}
+
 
 button {
     background-color: #fbc02d;

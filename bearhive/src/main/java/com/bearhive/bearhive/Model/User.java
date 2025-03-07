@@ -1,9 +1,17 @@
 package com.bearhive.bearhive.Model;
 
+import java.time.LocalDate;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,6 +22,20 @@ public class User {
     private Long id;
     private String fullname, password, email, role;
     private String avatar;
+    private String location;
+    private LocalDate birthday;
+
+    @Column(name = "joined_date")
+    @CreationTimestamp
+    private LocalDate joinedDate;
+
+    @PrePersist
+    protected void onCreate() {
+        this.joinedDate = LocalDate.now();
+    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
+    private Gender gender;
 
     public User() {}
     
@@ -59,5 +81,29 @@ public class User {
     }
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+    public LocalDate getJoinedDate() {
+        return joinedDate;
+    }
+    public void setJoinedDate(LocalDate joinedDate) {
+        this.joinedDate = joinedDate;
+    }
+    public Gender getGender() {
+        return gender;
+    }
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

@@ -25,7 +25,7 @@
                                     <span class="" th:text="${#strings.arraySplit(session.loggedUser.fullname, ' ')[#strings.arraySplit(session.loggedUser.fullname, ' ').length - 1]}"></span>
                                 </span>
                                 <div class="dropdown-menu" id="dropdown-menu">
-                                    <a href="#">Thông tin cá nhân</a>
+                                    <a th:href="@{/info/{id}(id=${session.loggedUser.id})}">Thông tin cá nhân</a>
                                     <a href="/logout">Logout</a>
                                 </div>
                             </div>
