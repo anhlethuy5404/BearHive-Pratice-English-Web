@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>English Test</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" th:href="@{/css/test.css}">
+    </head>
+    <body>
+        <div class="study-platform-container">
+            <header class="platform-header">
+              <div class="header-content">
+                <h1>Study Platform</h1>
+                <p class="subtitle">Master your subjects with interactive learning</p>
+                <div class="search-bar">
+                  <input type="text" placeholder="Search for courses..." />
+                  <button><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </header>
+          
+            <div class="subjects-grid">
+              <div class="subject-card">
+                <div class="subject-icon" [style.backgroundColor]="subject.color">
+                  <i [class]="subject.icon"></i>
+                </div>
+                <div class="subject-content">
+                  <h3>{{subject.name}}</h3>
+                  <p>{{subject.description}}</p>
+                  <div class="stats">
+                    <span><i class="fa fa-book"></i> {{subject.lessons}} Lessons</span>
+                    <span><i class="fa fa-users"></i> {{subject.students}} Students</span>
+                  </div>
+                  <button class="explore-btn">Explore Now</button>
+                </div>
+              </div>
+              <!--về sau xóa dưới đi-->
+              <div class="subject-card">
+                <div class="subject-icon" [style.backgroundColor]="subject.color">
+                  <i [class]="subject.icon"></i>
+                </div>
+                <div class="subject-content">
+                  <h3>{{subject.name}}</h3>
+                  <p>{{subject.description}}</p>
+                  <div class="stats">
+                    <span><i class="fa fa-book"></i> {{subject.lessons}} Lessons</span>
+                    <span><i class="fa fa-users"></i> {{subject.students}} Students</span>
+                  </div>
+                  <button class="explore-btn">Explore Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>

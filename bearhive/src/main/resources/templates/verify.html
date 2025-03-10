@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/forgot.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Verify OTP</h2>
+            <p>Nhập mã OTP đã gửi đến email của bạn</p>
+            <div th:if="${error}" class="error-message">[[${error}]]</div>
+            <form th:action="@{/verify}" method="post">
+                <input type="hidden" th:value="${email}" name="email">
+                <div class="input-group">
+                    <input type="text" name="otp" placeholder="Enter OTP" required>
+                </div>
+                <button type="submit">Xác nhận</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
@@ -36,6 +38,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Forgot forgot;
 
     public User() {}
     
@@ -105,5 +110,11 @@ public class User {
     }
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+    public Forgot getForgot() {
+        return forgot;
+    }
+    public void setForgot(Forgot forgot) {
+        this.forgot = forgot;
     }
 }

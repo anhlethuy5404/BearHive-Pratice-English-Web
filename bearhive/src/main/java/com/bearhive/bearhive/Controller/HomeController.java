@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
+
 @Controller
 public class HomeController {
     @GetMapping("/home")
@@ -17,11 +18,13 @@ public class HomeController {
         return "redirect:/home"; 
     }
     
-    
-
-    @GetMapping("/forgot")
-    public String forgotPassword() {
-        return "forgot";
+    @GetMapping("/test")
+    public String test() {
+        return "test";
     }
-    
+
+    @GetMapping("/flashcard")
+    public String flashcard() {
+        return "flashcard";
+    }    
 }

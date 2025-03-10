@@ -52,7 +52,7 @@ public class UserController {
     public String loginForm(@RequestParam("email") String email, @RequestParam("password") String password, RedirectAttributes redirectAttributes, HttpSession session) {
         User user = userService.loginUser(email, password, session);
         if (user == null) {
-            redirectAttributes.addFlashAttribute("message", "Email hoặc mật khẩu không đúng!");
+            redirectAttributes.addFlashAttribute("error", "Email hoặc mật khẩu không đúng!");
             return "redirect:/login";  
         }
         session.setAttribute("loggedUser", user);

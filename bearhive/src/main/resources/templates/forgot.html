@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Recovery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" th:href="@{/css/forgot.css}">
 </head>
 <body>
@@ -18,7 +19,7 @@
             <form id="recovery-form" class="form-space">
                 <div class="input-group">
                     <div class="input-wrapper">
-                        <span class="icon">✉️</span>
+                        <span class="icon"><i class="fa fa-envelope"></i></span>
                         <input type="email" id="email" placeholder="Enter your registered email" required>
                     </div>
                     <div id="error-message" class="error-message">
@@ -33,23 +34,42 @@
             </form>
 
             <div class="text-center links">
-                <a href="#" class="support-link">Contact Support</a>
                 <a href="/login" class="return-link">
                     ⬅ Return to Login
                 </a>
             </div>
-
-            <div class=" footer-text">
-                <p>By continuing, you agree to our</p>
-                <div class="policy-links">
-                    <a href="#">Terms of Service</a>
-                    <span>and</span>
-                    <a href="#">Privacy Policy</a>
-                </div>
-            </div>
         </div>
     </div>
+    <div class="cloud-image">
+        <img th:src="@{/image/bg/removebg-preview.png}">
+    </div>
+    <div class="cloud-image-2">
+        <img th:src="@{/image/bg/removebg-preview-2.png}">
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("recovery-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            
+            fetch('/forgot', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'email=' + encodeURIComponent(email)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const errorMessage = document.getElementById("error-message");
+                if (data.status === "success") {
+                    window.location.href = "/verify?email=" + encodeURIComponent(email);
+                } else {
+                    errorMessage.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                document.getElementById("error-message").textContent = "Có lỗi xảy ra, vui lòng thử lại!";
+            });
+        });
+    </script>
 </body>
 </html>

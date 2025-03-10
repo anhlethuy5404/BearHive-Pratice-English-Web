@@ -15,9 +15,11 @@ public class SecurityConfig {
             .requestMatchers("/user/**").hasAuthority("USER")
             .requestMatchers("/**").permitAll()
             .requestMatchers("/css/**", "/image/**", "/js/**").permitAll()
+            .requestMatchers("/forgot").permitAll()
             .anyRequest().authenticated()
             )
-            .logout(logout -> logout.permitAll());
+            .logout(logout -> logout.permitAll())
+            .csrf(csrf -> csrf.disable());
         return http.build();
     }
 }

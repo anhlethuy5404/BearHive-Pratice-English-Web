@@ -41,4 +41,11 @@ public class UserService {
         }
         return null;
     }
+
+    public void updatePassword(String email, String password) {
+        User user = userRepository.findByEmail(email).orElseThrow();
+        user.setPassword(password);
+        userRepository.save(user);
+    }
+
 }

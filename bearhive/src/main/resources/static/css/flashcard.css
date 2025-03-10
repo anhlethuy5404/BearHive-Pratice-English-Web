@@ -1,0 +1,155 @@
+* {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.study-platform-container {
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+.platform-header {
+    background: linear-gradient(135deg, #ffed87 0%, #ffd700 80%, #ffae00 100%);
+    padding: 4rem 2rem;
+    color: white;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.platform-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 1rem 2rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    padding: 5px 20px;
+    background: #fbad41;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: rgb(234, 140, 0);
+}
+
+.search-bar button i {
+    font-size: 1.1rem;
+}
+
+.flashcard-sets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+  
+.flashcard-set {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.flashcard-set:hover {
+    transform: translateY(-5px);
+}
+
+.set-thumbnail {
+    position: relative;
+    height: 200px;
+}
+
+.set-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.difficulty {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.beginner { background-color: #4CAF50; }
+.intermediate { background-color: #FFA500; }
+.advanced { background-color: #f44336; }
+
+.set-details {
+    padding: 20px;
+}
+
+.set-details h2 {
+    color: #3E2723;
+    margin: 0 0 10px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.set-details p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.set-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+.practice-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #F8B500;
+    color: #3E2723;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.practice-btn:hover {
+    background-color: #FFA500;
+}
