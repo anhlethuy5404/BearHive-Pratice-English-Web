@@ -93,10 +93,56 @@ h2 {
 }
 
 .error-message {
-    color: #d32f2f;
-    font-size: 12px;
-    margin-top: 5px;
-    min-height: 18px;
+    position: fixed; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 15px 40px 15px 50px; 
+    border-radius: 10px;
+    opacity: 0; 
+    transform: translate(-50%, -20px); 
+    z-index: 1000; 
+    background-color: #ffe6e6;
+    border: 2px solid #cc0000;
+    color: #660000;
+}
+
+.error-message.active {
+    animation: slideDown 2.5s ease forwards; 
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+.error-message::before {
+    content: "✗"; 
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #cc0000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.error-message:empty {
+    display: none;
 }
 
 .button-group {

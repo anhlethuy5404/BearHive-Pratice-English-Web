@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/dictation.css}">
+</head>
+<body>
+    <div class="dictation-container" [class.dark-mode]="isDarkMode">
+        <header class="practice-header">
+            <h1>Dictation Practice</h1>
+            <h2>Listen and Write</h2>
+            <button mat-icon-button (click)="toggleTheme()" class="theme-toggle">
+                <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
+            </button>
+        </header>
+    
+        <div class="audio-section">
+        <audio #audioPlayer (timeupdate)="onTimeUpdate()">
+            <source [src]="currentAudio" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    
+        <div class="audio-controls">
+            <button mat-icon-button (click)="playAudio()" [disabled]="isPlaying">
+            <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button mat-icon-button (click)="pauseAudio()" [disabled]="!isPlaying">
+            <mat-icon>pause</mat-icon>
+            </button>
+            <button mat-icon-button (click)="replayAudio()">
+            <mat-icon>replay</mat-icon>
+            </button>
+    
+            <mat-slider>
+            <input matSliderThumb [(ngModel)]="volume" (ngModelChange)="adjustVolume($event)">
+            </mat-slider>
+    
+            <mat-form-field>
+            <mat-label>Speed</mat-label>
+            <mat-select [(value)]="playbackSpeed" (selectionChange)="adjustSpeed($event)">
+                <mat-option [value]="0.5">0.5x</mat-option>
+                <mat-option [value]="1.0">1.0x</mat-option>
+                <mat-option [value]="1.5">1.5x</mat-option>
+                <mat-option [value]="2.0">2.0x</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        </div>
+    
+        <div class="transcription-area">
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Type what you hear...</mat-label>
+            <textarea matInput
+                    [(ngModel)]="transcription"
+                    (ngModelChange)="onTranscriptionChange()"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="6"
+                    cdkAutosizeMaxRows="15"
+                    [spellcheck]="true">
+            </textarea>
+        </mat-form-field>
+    
+        <div class="word-count">
+            <span>Words: {{ wordCount }}</span>
+            <span>Characters: {{ charCount }}</span>
+        </div>
+        </div>
+    
+        <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="showCorrectText()">
+            Show Correct Text
+        </button>
+        <button mat-raised-button color="accent" (click)="saveTranscription()">
+            Save Progress
+        </button>
+        <button mat-raised-button (click)="exportTranscription()">
+            Export
+        </button>
+        </div>
+    
+        <div *ngIf="showComparison" class="comparison-section">
+        <h3>Comparison Results</h3>
+        <div class="accuracy">
+            Accuracy: {{ accuracy }}%
+        </div>
+        <div class="correct-text" [innerHTML]="highlightedText"></div>
+        </div>
+    </div>
+</body>

@@ -51,6 +51,8 @@
         document.getElementById("recovery-form").addEventListener("submit", function(event) {
             event.preventDefault();
             const email = document.getElementById("email").value;
+            const pastError = document.getElementById("error-message");
+            pastError.textContent = "";
             
             fetch('/forgot', {
                 method: 'POST',
@@ -64,6 +66,7 @@
                     window.location.href = "/verify?email=" + encodeURIComponent(email);
                 } else {
                     errorMessage.textContent = data.message;
+                    errorMessage.classList.add("active");
                 }
             })
             .catch(error => {

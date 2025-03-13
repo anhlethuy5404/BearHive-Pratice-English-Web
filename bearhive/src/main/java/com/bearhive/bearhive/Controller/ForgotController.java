@@ -49,7 +49,7 @@ public class ForgotController {
         Optional<User> user = userRepository.findByEmail(email);
         if(!user.isPresent()) {
             response.put("status", "error");
-            response.put("message", "Email không tồn tại!");
+            response.put("message", "Email không tồn tại, vui lòng đăng ký tài khoản!");
             return response;
         }
         String otp = String.format("%06d", new Random().nextInt(100000,999999));
@@ -57,6 +57,7 @@ public class ForgotController {
         User u = user.get();
         Forgot forgot = new Forgot(otp, u, expiredDate);
         forgotRepository.save(forgot);
+        forgotRepository.flush();
         emailService.sendOtpMail(email, otp);
         response.put("status", "success");
         response.put("message", "Otp đã được gửi tới email của bạn!");
@@ -94,10 +95,35 @@ public class ForgotController {
             userRepository.save(user);
         }
         forgotRepository.delete(forgot);
+        forgotRepository.flush();
         model.addAttribute("email", email);
         return "reset";
     }
     
+    @PostMapping("/resend")
+    @Transactional
+    public String resendOtp(@RequestParam("email") String email, Model model) {
+        Forgot forgot = forgotRepository.findByUserEmail(email);
+        if(forgot == null) {
+            return "verify";
+        }
+        User user = forgot.getUser();
+        if(user != null) {
+            user.setForgot(null);
+            userRepository.save(user);
+        }
+        forgotRepository.delete(forgot);
+        forgotRepository.flush();
+        String otp = String.format("%06d", new Random().nextInt(100000,999999));
+        LocalDateTime expiredDate = LocalDateTime.now().plusMinutes(5);
+        Forgot newForgot = new Forgot(otp, user, expiredDate);
+        forgotRepository.save(newForgot);
+        emailService.sendOtpMail(email, otp);
+        model.addAttribute("email", email);
+        model.addAttribute("success", "Mã OTP mới đã được gửi!");
+        return "verify";
+    }
+
     @PostMapping("/reset")
     public String resetPassword(@RequestParam("email") String email, @RequestParam("password") String newPassword, Model model) {
         userService.updatePassword(email, newPassword);

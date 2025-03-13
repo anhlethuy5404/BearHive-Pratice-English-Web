@@ -17,18 +17,26 @@ body {
     border-radius: 10px;
     opacity: 0; 
     transform: translate(-50%, -20px); 
-    animation: slideDown 0.5s ease forwards; 
+    animation: slideDown 2.5s ease forwards; 
     z-index: 1000; 
 }
 
 @keyframes slideDown {
-    from {
+    0% {
         opacity: 0;
         transform: translate(-50%, -20px);
     }
-    to {
+    20% {
         opacity: 1;
         transform: translate(-50%, 0);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
     }
 }
 
