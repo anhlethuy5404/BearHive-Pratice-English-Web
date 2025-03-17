@@ -85,7 +85,7 @@ public class ForgotController {
             return "verify";
         }
         if(LocalDateTime.now().isAfter(forgot.getExpiredDate())) {
-            model.addAttribute("error", "OTP đã hết hạn!");
+            model.addAttribute("error", "OTP đã hết hạn, vui lòng bấm gửi lại OTP!");
             model.addAttribute("email", email);
             return "verify";
         }

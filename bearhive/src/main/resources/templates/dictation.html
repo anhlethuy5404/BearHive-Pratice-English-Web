@@ -3,90 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Recovery</title>
+    <title>BearHive - English Practice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" th:href="@{/css/dictation.css}">
 </head>
 <body>
-    <div class="dictation-container" [class.dark-mode]="isDarkMode">
-        <header class="practice-header">
-            <h1>Dictation Practice</h1>
-            <h2>Listen and Write</h2>
-            <button mat-icon-button (click)="toggleTheme()" class="theme-toggle">
-                <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
-            </button>
+    <div class="dictation-container">
+        <header class="platform-header">
+            <div class="header-content">
+              <h1>Dictation</h1>
+              <p class="subtitle">Master your subjects with interactive learning</p>
+              <div class="search-bar">
+                <input type="text" placeholder="Search for dictations..." />
+                <button><i class="fa fa-search"></i></button>
+              </div>
+            </div>
         </header>
-    
-        <div class="audio-section">
-        <audio #audioPlayer (timeupdate)="onTimeUpdate()">
-            <source [src]="currentAudio" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    
-        <div class="audio-controls">
-            <button mat-icon-button (click)="playAudio()" [disabled]="isPlaying">
-            <mat-icon>play_arrow</mat-icon>
-            </button>
-            <button mat-icon-button (click)="pauseAudio()" [disabled]="!isPlaying">
-            <mat-icon>pause</mat-icon>
-            </button>
-            <button mat-icon-button (click)="replayAudio()">
-            <mat-icon>replay</mat-icon>
-            </button>
-    
-            <mat-slider>
-            <input matSliderThumb [(ngModel)]="volume" (ngModelChange)="adjustVolume($event)">
-            </mat-slider>
-    
-            <mat-form-field>
-            <mat-label>Speed</mat-label>
-            <mat-select [(value)]="playbackSpeed" (selectionChange)="adjustSpeed($event)">
-                <mat-option [value]="0.5">0.5x</mat-option>
-                <mat-option [value]="1.0">1.0x</mat-option>
-                <mat-option [value]="1.5">1.5x</mat-option>
-                <mat-option [value]="2.0">2.0x</mat-option>
-            </mat-select>
-            </mat-form-field>
-        </div>
-        </div>
-    
-        <div class="transcription-area">
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Type what you hear...</mat-label>
-            <textarea matInput
-                    [(ngModel)]="transcription"
-                    (ngModelChange)="onTranscriptionChange()"
-                    cdkTextareaAutosize
-                    cdkAutosizeMinRows="6"
-                    cdkAutosizeMaxRows="15"
-                    [spellcheck]="true">
-            </textarea>
-        </mat-form-field>
-    
-        <div class="word-count">
-            <span>Words: {{ wordCount }}</span>
-            <span>Characters: {{ charCount }}</span>
-        </div>
-        </div>
-    
-        <div class="action-buttons">
-        <button mat-raised-button color="primary" (click)="showCorrectText()">
-            Show Correct Text
-        </button>
-        <button mat-raised-button color="accent" (click)="saveTranscription()">
-            Save Progress
-        </button>
-        <button mat-raised-button (click)="exportTranscription()">
-            Export
-        </button>
-        </div>
-    
-        <div *ngIf="showComparison" class="comparison-section">
-        <h3>Comparison Results</h3>
-        <div class="accuracy">
-            Accuracy: {{ accuracy }}%
-        </div>
-        <div class="correct-text" [innerHTML]="highlightedText"></div>
+
+        <nav class="dictation-nav">
+            <ul>
+                <li id="daily-tab" onclick="switchTab('daily')">Daily Dictation</li>
+                <li id="topic-tab" onclick="switchTab('topic')">Topics</li>
+                <li id="difficulty-tab" onclick="switchTab('difficulty')">Difficulty Levels</li>
+            </ul>
+        </nav>
+
+        <div class="daily-content">
+            <section class="recommended-section">
+                <h2>Recommended for today</h2>
+                <div class="dictation-grid">
+                  <div class="dictation-card">
+                    <div class="card-content">
+                      <img th:src="@{/image/bg/bg2.png}" class="card-image">
+                      <h3>{{dictation.title}}</h3>
+                      <p class="time">{{dictation.duration}} minutes</p>
+                      <p class="description">{{dictation.description}}</p>
+                      <button class="start-btn">Start</button>
+                    </div>
+                  </div>
+                  <!--bỏ đoạn dưới-->
+                  <div class="dictation-card">
+                    <div class="card-content">
+                      <img th:src="@{/image/bg/bg2.png}" class="card-image">
+                      <h3>{{dictation.title}}</h3>
+                      <p class="time">{{dictation.duration}} minutes</p>
+                      <p class="description">{{dictation.description}}</p>
+                      <button class="start-btn">Start</button>
+                    </div>
+                  </div>
+                  <div class="dictation-card">
+                    <div class="card-content">
+                      <img th:src="@{/image/bg/bg2.png}" class="card-image">
+                      <h3>{{dictation.title}}</h3>
+                      <p class="time">{{dictation.duration}} minutes</p>
+                      <p class="description">{{dictation.description}}</p>
+                      <button class="start-btn">Start</button>
+                    </div>
+                  </div>
+                </div>
+            </section>
+
+            <section class="popular-section">
+                <div class="section-header">
+                  <h2>Most Popular Dictations</h2>
+                  <div class="filters">
+                    <select [(ngModel)]="selectedSort" (change)="sortDictations()">
+                      <option value="learners">Most Learners</option>
+                      <option value="rating">Top Rated</option>
+                      <option value="completion">Highest Completion</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="dictation-grid">
+                  <div *ngFor="let dictation of popularDictations" class="dictation-card" [ngClass]="dictation.level">
+                    <div class="card-content">
+                      <img [src]="dictation.image" [alt]="dictation.title" class="card-image">
+                      <h3>{{dictation.title}}</h3>
+                      <div class="stats">
+                        <span><i class="fa fa-users"></i> {{dictation.learners}}</span>
+                        <span><i class="fa fa-star"></i> {{dictation.rating}}</span>
+                      </div>
+                      <div class="level-badge">{{dictation.level}}</div>
+                      <button class="learn-btn" (click)="startDictation(dictation)">Learn Now</button>
+                    </div>
+                  </div>
+                </div>
+            </section>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            switchTab("daily");
+        });
+        
+        function switchTab(tab) {
+            document.querySelectorAll(".dictation-nav li").forEach(li => li.classList.remove("active"));
+            document.getElementById(`${tab}-tab`).classList.add("active");
+
+            document.querySelectorAll(".tab-content > div").forEach(div => div.classList.add("hidden"));
+            document.getElementById(`${tab}-content`).classList.remove("hidden");
+        }
+    </script>
 </body>

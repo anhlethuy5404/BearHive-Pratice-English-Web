@@ -49,6 +49,13 @@ p {
     width: 100%;
 }
 
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 20px 0 5px 0px;
+}
+
 .input-group .icon {
     position: absolute;
     left: 15px;
@@ -186,4 +193,50 @@ p {
 
 .resend-btn:active {
     transform: translateY(1px);
+}
+
+.cloud-image img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; 
+    max-width: 1600px; 
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: floatCloud 3s ease-in-out infinite; 
+}
+.cloud-image-2 img {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; 
+    max-width: 1600px; 
+    z-index: -1;
+    pointer-events: none;
+    animation: floatCloud2 5s ease-in-out infinite; 
+}
+@keyframes floatCloud {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px); 
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+@keyframes floatCloud2 {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(20px); 
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
 }

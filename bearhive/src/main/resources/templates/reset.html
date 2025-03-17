@@ -11,15 +11,24 @@
     <div class="container">
         <div class="form-box">
             <h2>Reset Password</h2>
-            <p>Nhập mật khẩu mới</p>
             <form th:action="@{/reset}" method="post">
                 <input type="hidden" th:value="${email}" name="email">
                 <div class="input-group">
-                    <input type="password" name="password" placeholder="New Password" required>
+                    <label for="password">New password</label>
+                    <input name="password" type="password" placeholder="Enter your new password" required>
+                    <label for="password">Confirm password</label>
+                    <input type="password" placeholder="Confirm Password" required>
                 </div>
                 <button type="submit" class="submit-btn">Đặt lại mật khẩu</button>
             </form>
         </div>
+    </div>
+
+    <div class="cloud-image">
+        <img th:src="@{/image/bg/removebg-preview.png}">
+    </div>
+    <div class="cloud-image-2">
+        <img th:src="@{/image/bg/removebg-preview-2.png}">
     </div>
 </body>
 </html>
