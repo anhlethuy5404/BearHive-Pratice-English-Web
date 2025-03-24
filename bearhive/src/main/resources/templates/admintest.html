@@ -21,65 +21,22 @@
                     </div>
                     <div class="create-test">
                         <i class="fa fa-plus-circle"></i>
-                        <button class="create-btn">Create</button>
+                        <a th:href="@{/admin/tests/create}" class="create-btn">CREATE TEST</a>
                     </div>
                 </div>
                 <div class="test-list">
-                    <div class="test-card">
-                        <img>
-                        <h3>IELTS Stimulation</h3>
-                        <p>Volume 3</p>
+                    <div th:each="test : ${tests}" class="test-card">
+                        <img th:src="${test.coveredImage}">
+                        <h3 th:text="${test.title}"></h3>
+                        <p th:text="${test.description}"></p>
                         <div class="tags">
-                            <span class="type">IELTS</span>
-                            <span class="level beginner">Beginner</span>
-                            <span class="questions">30 questions</span>
+                            <span th:text="${test.type}" class="type"></span>
+                            <span th:class="'level ' + ${test.difficulty.toLowerCase()}" th:text="${test.difficulty}"></span>
+                            <span th:text="${test.questions} + ' questions'" class="question"></span>
                         </div>
                         <div class="questions">
-                            <span>Created: March 17, 2025</span>
-                            <span>Last modified: April 10, 2025</span>
-                        </div>
-                    </div>
-                    <!--xoa duoi di-->
-                    <div class="test-card">
-                        <img>
-                        <h3>IELTS Stimulation</h3>
-                        <p>Volume 3</p>
-                        <div class="tags">
-                            <span class="type">IELTS</span>
-                            <span class="level intermediate">Intermediate</span>
-                            <span class="number questions">30 questions</span>
-                        </div>
-                        <div class="questions">
-                            <span>Created: March 17, 2025</span>
-                            <span>Last modified: April 10, 2025</span>
-                        </div>
-                    </div>
-                    <div class="test-card">
-                        <img>
-                        <h3>IELTS Stimulation</h3>
-                        <p>Volume 3</p>
-                        <div class="tags">
-                            <span class="type">IELTS</span>
-                            <span class="level">Advanced</span>
-                            <span class="questions">30 questions</span>
-                        </div>
-                        <div class="questions">
-                            <span>Created: March 17, 2025</span>
-                            <span>Last modified: April 10, 2025</span>
-                        </div>
-                    </div>
-                    <div class="test-card">
-                        <img>
-                        <h3>IELTS Stimulation</h3>
-                        <p>Volume 3</p>
-                        <div class="tags">
-                            <span class="type">IELTS</span>
-                            <span class="level advanced">Advanced</span>
-                            <span class="questions">30 questions</span>
-                        </div>
-                        <div class="questions">
-                            <span>Created: March 17, 2025</span>
-                            <span>Last modified: April 10, 2025</span>
+                            <span th:text="'Created: ' + ${test.createdDate}"></span>
+                            <span th:text="'Last modified: ' + ${test.updateDate}"></span>
                         </div>
                     </div>
                 </div>

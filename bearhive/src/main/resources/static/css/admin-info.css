@@ -361,6 +361,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
+  color: #fff;
 }
 
 .export-btn:hover,
@@ -382,10 +383,11 @@ body {
   background-color: #D97706;
 }
 .create-btn {
-  border: none;
   color: #fff;
-  font-size: 16px;
-  background-color: transparent;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
 .test-list {
   display: grid;
@@ -425,7 +427,7 @@ body {
 
 .tags span {
   color: #000;
-  padding: 2px 5px;
+  padding: 3px 8px;
   border-radius: 10px;
   font-size: 12px;
   align-content: center;
@@ -434,7 +436,6 @@ body {
   background-color: #FBBF24;
 }
 .level {
-  padding: 5px 10px;
   border-radius: 15px;
   font-size: 12px;
   color: #fff;
@@ -454,12 +455,154 @@ body {
   font-size: 12px;
   background-color: #e3e3e3;
 }
-.questions {
+.question {
   font-size: 12px;
-  color: #888;
+  background-color: #cecece;
 }
 .questions span {
+  font-size: 12px;
   display: table-row
+}
+
+/* Giao diện tạo bài test */
+.back-to-tests {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 16px;
+  gap: 8px;
+}
+
+.back-to-tests a {
+  color: #333;
+  text-decoration: none;
+}
+.back-to-tests:hover, .back-to-tests a:hover, .back-to-tests i:hover {
+  color: rgb(254, 178, 78);
+}
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="number"]::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+}
+
+.form-group select {
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%23333" d="M0 0h10L5 5z"/></svg>') no-repeat right 10px center;
+  background-size: 10px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group .radio-label {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-group input[type="radio"]:checked + .radio-label.beginner {
+  background-color: #e0fae9;
+  border-color: #00d451;
+  color: #00d47c;
+}
+
+.radio-group input[type="radio"]:checked + .radio-label.intermediate {
+  background-color: #E3F2FD;
+  border-color: #2196F3;
+  color: #2196F3;
+}
+
+.radio-group input[type="radio"]:checked + .radio-label.advanced {
+  background-color: #F3E5F5;
+  border-color: #AB47BC;
+  color: #AB47BC;
+}
+
+.inline-group {
+  display: flex;
+  gap: 20px;
+}
+
+.form-subgroup {
+  flex: 1;
+}
+
+.form-subgroup input[type="file"] {
+  border: 1px dashed #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #666;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #4B0082;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6A0DAD;
 }
 
 /* Responsive */

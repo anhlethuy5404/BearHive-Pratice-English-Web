@@ -9,8 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "forgot")
 public class Forgot {
     @Id
@@ -23,9 +29,6 @@ public class Forgot {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    
-    public Forgot() {
-    }
 
     public Forgot(String otp, User user, LocalDateTime expiredDate) {
         this.otp = otp;
@@ -33,30 +36,6 @@ public class Forgot {
         this.expiredDate = expiredDate;
     }
 
-    public Long getFgid() {
-        return fgid;
-    }
-    public void setFgid(Long fgid) {
-        this.fgid = fgid;
-    }
-    public String getOtp() {
-        return otp;
-    }
-    public void setOtp(String otp) {
-        this.otp = otp;
-    }
-    public LocalDateTime getExpiredDate() {
-        return expiredDate;
-    }
-    public void setExpiredDate(LocalDateTime expiredDate) {
-        this.expiredDate = expiredDate;
-    }
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
     public boolean isExpired() {
         return LocalDateTime.now().isAfter(expiredDate);
     }
