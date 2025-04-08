@@ -5,9 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>English Test</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" th:href="@{css/header.css}">
         <link rel="stylesheet" th:href="@{/css/flashcard.css}">
     </head>
     <body>
+        <div th:insert="~{header :: header}"></div>
         <div class="study-platform-container">
             <header class="platform-header">
               <div class="header-content">
@@ -119,5 +121,7 @@
                   </div>
             </div>
         </div>
+
+        <script th:src="@{../js/header.js}"></script>
     </body>
 </html>

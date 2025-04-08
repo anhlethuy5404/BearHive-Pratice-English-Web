@@ -5,6 +5,7 @@
 }
 
 .dictation-container {
+  margin-top: 70px;
   background: #f8f9fa;
   min-height: 100vh;
 }
@@ -161,7 +162,7 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background: #4a90e2;
+  background: #ffd700;
   color: white;
   font-weight: 500;
   cursor: pointer;
@@ -169,7 +170,7 @@
 }
 
 .start-btn:hover, .learn-btn:hover {
-  background: #357abd;
+  background: #ff9500;
 }
 
 .filters {

@@ -1,5 +1,7 @@
 package com.bearhive.bearhive.Controller;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bearhive.bearhive.Model.Test;
 import com.bearhive.bearhive.Model.User;
@@ -68,7 +72,7 @@ public class AdminController {
     }
     
     @PostMapping("/tests/create")
-    public String createTestSubmit(@ModelAttribute("test") Test test, Model model) {
+    public String createTestSubmit(@ModelAttribute("test") Test test, @RequestParam("imageFile") MultipartFile imageFile, Model model) {
         try {
             Optional<User> userOp = userRepository.findByEmail("thuyanh5404.kba@gmail.com");
             if (userOp.isPresent()) {
@@ -81,6 +85,14 @@ public class AdminController {
             if (test.getUpdateDate()==null) {
                 test.setUpdateDate(LocalDate.now());
             }
+            String fileName = imageFile.getOriginalFilename();
+            String upDir = Paths.get("bearhive/src/main/resources/static/image/test").toAbsolutePath().toString();
+            File dir = new File(upDir);
+            if (!dir.exists()) {
+                dir.mkdir();
+            } 
+            imageFile.transferTo(new File(dir, fileName));
+            test.setCoveredImage("/image/test/" + fileName);
             testRepository.save(test);
             return "redirect:/admin/tests";
         }

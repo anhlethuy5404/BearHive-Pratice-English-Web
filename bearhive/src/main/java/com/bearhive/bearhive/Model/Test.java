@@ -39,10 +39,11 @@ public class Test {
         this.createdDate = LocalDate.now();
     }
 
-    public Test(String title, String description, String difficulty, int questions, LocalDate updateDate, User user) {
+    public Test(String title, String description, String difficulty, String coveredImage, int questions, LocalDate updateDate, User user) {
         this.title = title;
         this.description = description;
         this.difficulty = difficulty;
+        this.coveredImage = coveredImage;
         this.questions = questions;
         this.updateDate = updateDate;
         this.user = user;

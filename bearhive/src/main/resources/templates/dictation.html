@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BearHive - English Practice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/dictation.css}">
 </head>
 <body>
+    <div th:insert="~{header :: header}"></div>
     <div class="dictation-container">
         <header class="platform-header">
             <div class="header-content">
@@ -92,6 +94,8 @@
         </div>
     </div>
 
+    <script th:src="@{../js/header.js}"></script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             switchTab("daily");

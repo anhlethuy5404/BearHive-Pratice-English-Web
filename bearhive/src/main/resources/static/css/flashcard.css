@@ -5,6 +5,7 @@
 }
 
 .study-platform-container {
+    margin-top: 70px;
     background: #f8f9fa;
     min-height: 100vh;
 }
@@ -141,7 +142,7 @@
 .practice-btn {
     width: 100%;
     padding: 12px;
-    background-color: #F8B500;
+    background-color: #ffd700;
     color: #3E2723;
     border: none;
     border-radius: 25px;
