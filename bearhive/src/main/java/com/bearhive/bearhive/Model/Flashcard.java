@@ -3,7 +3,6 @@ package com.bearhive.bearhive.Model;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,13 +21,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "test")
-public class Test {
+@Table(name = "flashcard")
+public class Flashcard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title, description, type, difficulty, coveredImage;
+    private String title, difficulty, type, description, coveredImage;
     private int questions;
     private LocalDate createdDate;
     private LocalDate updateDate;
@@ -37,25 +36,22 @@ public class Test {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "test", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UserTest> userTests;
-
-    @OneToMany(mappedBy = "test", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<Part> parts;
+    @OneToMany(mappedBy = "flashcard", fetch = FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL)
+    private List<Word> words;
 
     @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDate.now();
     }
 
-    public Test(String title, String description, String difficulty, String coveredImage, int questions, LocalDate updateDate, User user) {
+    public Flashcard(String title, String difficulty, String type, String description, String coveredImage, int questions, LocalDate updateDate, User user) {
         this.title = title;
-        this.description = description;
         this.difficulty = difficulty;
+        this.type = type;
+        this.description = description;
         this.coveredImage = coveredImage;
         this.questions = questions;
         this.updateDate = updateDate;
         this.user = user;
     }
-
 }

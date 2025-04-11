@@ -22,40 +22,35 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "test")
-public class Test {
+@Table(name = "dictation")
+public class Dictation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title, description, type, difficulty, coveredImage;
-    private int questions;
     private LocalDate createdDate;
     private LocalDate updateDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToMany(mappedBy = "test", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UserTest> userTests;
-
-    @OneToMany(mappedBy = "test", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<Part> parts;
 
     @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDate.now();
     }
 
-    public Test(String title, String description, String difficulty, String coveredImage, int questions, LocalDate updateDate, User user) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy="dictation", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private List<UserDictation> userDictations;
+
+    public Dictation(String title, String description, String type, String difficulty, String coveredImage, LocalDate updateDate, User user) {
         this.title = title;
         this.description = description;
+        this.type = type;
         this.difficulty = difficulty;
         this.coveredImage = coveredImage;
-        this.questions = questions;
         this.updateDate = updateDate;
         this.user = user;
     }
-
 }
