@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BearHive - English Practice</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" th:href="@{/css/ielts-test.css}">
+    </head>
+<body>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="header">
+                <h1 class="title">IELTS Simulation Listening test 1</h1>
+                <a th:href="@{/ielts}" class="exit-btn">Exit</a>
+            </div>
+
+            <div class="highlight-toggle">
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Highlight content</span>
+                <span class="info-icon" title="Highlight important information in the test">ⓘ</span>
+            </div>
+
+            <div class="recording-tabs">
+                <div class="recording-tab active">Recording 1</div>
+                <div class="recording-tab">Recording 2</div>
+                <div class="recording-tab">Recording 3</div>
+                <div class="recording-tab">Recording 4</div>
+            </div>
+
+            <div class="audio-player">
+                <button class="play-btn">▶</button>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="time-display">00:00</div>
+                <button class="volume-btn">🔊</button>
+                <div class="volume-slider">
+                    <div class="volume-level"></div>
+                </div>
+                <button class="settings-btn">⚙️</button>
+            </div>
+
+            <div class="test-content">
+                <div class="instructions">
+                    <p class="instruction-text">Complete the form below.</p>
+                    <p class="instruction-text">Write <span class="bold-instruction">NO MORE THAN TWO WORDS AND/OR A NUMBER</span> for each answer.</p>
+                </div>
+
+                <h2 class="form-title">SHORT STAY ACCOMMODATION</h2>
+
+                <div class="form-field">
+                    <div class="field-label">Family Name:</div>
+                    <div class="field-value">Mackinlay</div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">First Name:</div>
+                    <div class="field-value"><span class="blank">____1____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Country of Origin:</div>
+                    <div class="field-value"><span class="blank">____2____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Date of Arrival:</div>
+                    <div class="field-value"><span class="blank">____3____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Number of Tenants:</div>
+                    <div class="field-value"><span class="blank">____4____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Length of Stay:</div>
+                    <div class="field-value">2 weeks</div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Purpose of Visit:</div>
+                    <div class="field-value"><span class="blank">____5____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Type of Accommodation:</div>
+                    <div class="field-value"><span class="blank">____6____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Number of Bedrooms:</div>
+                    <div class="field-value">one or two</div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Car Parking:</div>
+                    <div class="field-value">off-street and <span class="blank">____7____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">General Area:</div>
+                    <div class="field-value">near the beach</div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Other Requirements:</div>
+                    <div class="field-value">near <span class="blank">____8____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Name of Town:</div>
+                    <div class="field-value"><span class="blank">____9____</span></div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Client's Email:</div>
+                    <div class="field-value">smac13@hotmail.com</div>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-label">Price Range:</div>
+                    <div class="field-value">up to $ <span class="blank">____10____</span> a week</div>
+                </div>
+            </div>
+
+            <div class="answer-section">
+                <div class="answer-item">
+                    <div class="answer-number">1</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">2</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">3</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">4</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">5</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">6</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">7</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">8</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">9</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+                <div class="answer-item">
+                    <div class="answer-number">10</div>
+                    <input type="text" class="answer-input" placeholder="Enter your answer">
+                </div>
+
+                <button class="next-btn">
+                    Next
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="timer-section">
+                <div class="timer-label">Time remaining:</div>
+                <div class="timer-display">00:35</div>
+            </div>
+
+            <button class="submit-btn">SUBMIT TEST</button>
+
+            <div class="note">Restart/save test →</div>
+            <div class="note-yellow">Note: You can click on the question number in the right panel to navigate directly to that question for review.</div>
+
+            <div class="recording-section">
+                <h3 class="recording-title">Recording 1</h3>
+                <div class="question-grid">
+                    <button class="question-btn active">1</button>
+                    <button class="question-btn">2</button>
+                    <button class="question-btn">3</button>
+                    <button class="question-btn">4</button>
+                    <button class="question-btn">5</button>
+                    <button class="question-btn">6</button>
+                    <button class="question-btn">7</button>
+                    <button class="question-btn">8</button>
+                    <button class="question-btn">9</button>
+                    <button class="question-btn">10</button>
+                </div>
+            </div>
+
+            <div class="recording-section">
+                <h3 class="recording-title">Recording 2</h3>
+                <div class="question-grid">
+                    <button class="question-btn">11</button>
+                    <button class="question-btn">12</button>
+                    <button class="question-btn">13</button>
+                    <button class="question-btn">14</button>
+                    <button class="question-btn">15</button>
+                    <button class="question-btn">16</button>
+                    <button class="question-btn">17</button>
+                    <button class="question-btn">18</button>
+                    <button class="question-btn">19</button>
+                    <button class="question-btn">20</button>
+                </div>
+            </div>
+
+            <div class="recording-section">
+                <h3 class="recording-title">Recording 3</h3>
+                <div class="question-grid">
+                    <button class="question-btn">21</button>
+                    <button class="question-btn">22</button>
+                    <button class="question-btn">23</button>
+                    <button class="question-btn">24</button>
+                    <button class="question-btn">25</button>
+                    <button class="question-btn">26</button>
+                    <button class="question-btn">27</button>
+                    <button class="question-btn">28</button>
+                    <button class="question-btn">29</button>
+                    <button class="question-btn">30</button>
+                </div>
+            </div>
+
+            <div class="recording-section">
+                <h3 class="recording-title">Recording 4</h3>
+                <div class="question-grid">
+                    <button class="question-btn">31</button>
+                    <button class="question-btn">32</button>
+                    <button class="question-btn">33</button>
+                    <button class="question-btn">34</button>
+                    <button class="question-btn">35</button>
+                    <button class="question-btn">36</button>
+                    <button class="question-btn">37</button>
+                    <button class="question-btn">38</button>
+                    <button class="question-btn">39</button>
+                    <button class="question-btn">40</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const recordingTabs = document.querySelectorAll('.recording-tab');
+            recordingTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    recordingTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+            
+            // Play button toggle
+            const playBtn = document.querySelector('.play-btn');
+            let isPlaying = false;
+            
+            playBtn.addEventListener('click', function() {
+                isPlaying = !isPlaying;
+                if (isPlaying) {
+                    this.textContent = '⏸';
+                    simulateProgress();
+                } else {
+                    this.textContent = '▶';
+                    clearInterval(progressInterval);
+                }
+            });
+            
+            // Simulate progress bar
+            let progressBar = document.querySelector('.progress-bar');
+            let progressWidth = 0;
+            let progressInterval;
+            
+            function simulateProgress() {
+                progressInterval = setInterval(() => {
+                    if (progressWidth < 100) {
+                        progressWidth += 0.5;
+                        progressBar.style.width = progressWidth + '%';
+                        
+                        // Update time display
+                        const totalSeconds = 180; // 3 minutes total
+                        const currentSeconds = Math.floor((progressWidth / 100) * totalSeconds);
+                        const minutes = Math.floor(currentSeconds / 60);
+                        const seconds = currentSeconds % 60;
+                        document.querySelector('.time-display').textContent = 
+                            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    } else {
+                        clearInterval(progressInterval);
+                        playBtn.textContent = '▶';
+                        isPlaying = false;
+                    }
+                }, 100);
+            }
+            
+            // Question navigation
+            const questionBtns = document.querySelectorAll('.question-btn');
+            questionBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    questionBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            
+            // Timer countdown
+            let timeLeft = 35 * 60; // 35 minutes in seconds
+            const timerDisplay = document.querySelector('.timer-display');
+            
+            function updateTimer() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft > 0) {
+                    timeLeft--;
+                }
+            }
+            
+            // Update timer every second
+            setInterval(updateTimer, 1000);
+            
+            // Mark questions as answered when input changes
+            const answerInputs = document.querySelectorAll('.answer-input');
+            answerInputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    if (input.value.trim() !== '') {
+                        questionBtns[index].classList.add('answered');
+                    } else {
+                        questionBtns[index].classList.remove('answered');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script th:src="@{/js/header.js}"></script>
+</body>
+</html>

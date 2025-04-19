@@ -5,88 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Recovery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/dictation-content.css}">
 </head>
 <body>
-    <div class="dictation-container" [class.dark-mode]="isDarkMode">
-        <header class="practice-header">
-            <h1>Dictation Practice</h1>
-            <h2>Listen and Write</h2>
-            <button mat-icon-button (click)="toggleTheme()" class="theme-toggle">
-                <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
-            </button>
-        </header>
-    
-        <div class="audio-section">
-        <audio #audioPlayer (timeupdate)="onTimeUpdate()">
-            <source [src]="currentAudio" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    
-        <div class="audio-controls">
-            <button mat-icon-button (click)="playAudio()" [disabled]="isPlaying">
-            <mat-icon>play_arrow</mat-icon>
-            </button>
-            <button mat-icon-button (click)="pauseAudio()" [disabled]="!isPlaying">
-            <mat-icon>pause</mat-icon>
-            </button>
-            <button mat-icon-button (click)="replayAudio()">
-            <mat-icon>replay</mat-icon>
-            </button>
-    
-            <mat-slider>
-            <input matSliderThumb [(ngModel)]="volume" (ngModelChange)="adjustVolume($event)">
-            </mat-slider>
-    
-            <mat-form-field>
-            <mat-label>Speed</mat-label>
-            <mat-select [(value)]="playbackSpeed" (selectionChange)="adjustSpeed($event)">
-                <mat-option [value]="0.5">0.5x</mat-option>
-                <mat-option [value]="1.0">1.0x</mat-option>
-                <mat-option [value]="1.5">1.5x</mat-option>
-                <mat-option [value]="2.0">2.0x</mat-option>
-            </mat-select>
-            </mat-form-field>
-        </div>
-        </div>
-    
-        <div class="transcription-area">
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Type what you hear...</mat-label>
-            <textarea matInput
-                    [(ngModel)]="transcription"
-                    (ngModelChange)="onTranscriptionChange()"
-                    cdkTextareaAutosize
-                    cdkAutosizeMinRows="6"
-                    cdkAutosizeMaxRows="15"
-                    [spellcheck]="true">
-            </textarea>
-        </mat-form-field>
-    
-        <div class="word-count">
-            <span>Words: {{ wordCount }}</span>
-            <span>Characters: {{ charCount }}</span>
-        </div>
-        </div>
-    
-        <div class="action-buttons">
-        <button mat-raised-button color="primary" (click)="showCorrectText()">
-            Show Correct Text
-        </button>
-        <button mat-raised-button color="accent" (click)="saveTranscription()">
-            Save Progress
-        </button>
-        <button mat-raised-button (click)="exportTranscription()">
-            Export
-        </button>
-        </div>
-    
-        <div *ngIf="showComparison" class="comparison-section">
-        <h3>Comparison Results</h3>
-        <div class="accuracy">
-            Accuracy: {{ accuracy }}%
-        </div>
-        <div class="correct-text" [innerHTML]="highlightedText"></div>
+    <div th:insert="~{header :: header}"></div>
+    <div class="container">
+        <div class="main-content">
+            <div class="practice-header">
+                <h1 class="practice-title">[Practice Test 1] Conversation 1 <span class="level-badge">Vocab level: B1</span></h1>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active">Dictation</div>
+                <div class="tab">Full transcript</div>
+            </div>
+
+            <div class="tab-content">
+                <!-- Dictation Tab Content -->
+                <div class="dictation-container">
+                    <div class="navigation-controls">
+                        <div class="pagination">
+                            <div class="nav-arrow">&#8592;</div>
+                            <div class="pagination-text">1 / 17</div>
+                            <div class="nav-arrow">&#8594;</div>
+                        </div>
+                        <button class="settings-btn">
+                            <span>⚙️</span> Settings
+                        </button>
+                    </div>
+
+                    <div class="audio-player">
+                        <button class="play-btn">▶</button>
+                        <div class="time-display">0:00 / 0:01</div>
+                        <div class="progress-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <button class="volume-btn">🔊</button>
+                        <button class="options-btn">⋮</button>
+                        <div class="playback-speed">1x ▼</div>
+                    </div>
+
+                    <div class="hint-container">
+                        <span class="hint-icon">💡</span>
+                        <span class="hint-text">Hint:</span>
+                        <span class="hint-value">Jack</span>
+                    </div>
+
+                    <div class="input-container">
+                        <textarea class="dictation-input" placeholder="Type what you hear..."></textarea>
+                        <button class="mic-btn">🎤</button>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn check-btn">Check</button>
+                        <button class="btn skip-btn">Skip</button>
+                    </div>
+                </div>
+
+                <!-- Full Transcript Tab Content (hidden by default) -->
+                <div class="transcript-container" style="display: none;">
+                    <div class="transcript-left">
+                        <div class="translation-selector">
+                            <span class="translation-label">Translation</span>
+                            <select class="language-select">
+                                <option value="afrikaans">Afrikaans</option>
+                                <option value="english">English</option>
+                                <option value="french">French</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="german">German</option>
+                            </select>
+                        </div>
+
+                        <div class="audio-player">
+                            <button class="play-btn">▶</button>
+                            <div class="time-display">0:00 / 0:43</div>
+                            <div class="progress-container">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <button class="volume-btn">🔊</button>
+                            <button class="options-btn">⋮</button>
+                        </div>
+
+                        <div class="transcript-text">
+                            Good morning, Jack.
+                        </div>
+
+                        <div class="navigation-controls">
+                            <div class="pagination">
+                                <div class="nav-arrow">&#8592;</div>
+                                <div class="pagination-text">1 / 17</div>
+                                <div class="nav-arrow">&#8594;</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transcript-right">
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">Good morning, Jack.</div>
+                        </div>
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">Can you do me a favor and photocopy these documents for me, please?</div>
+                        </div>
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">I need them for the staff meeting tomorrow morning.</div>
+                        </div>
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">There will be fifteen attendees.</div>
+                        </div>
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">Hi, Grace.</div>
+                        </div>
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">Unfortunately, the copy machine is out of order.</div>
+                        </div>
+                        <div class="sentence-item">
+                            <button class="sentence-play-btn">▶</button>
+                            <div class="sentence-text">The repairman is supposed to come this afternoon to take a look.</div>
+                        </div>
+
+                        <div class="transcript-footer">
+                            <div>Press "Space" to Play/Pause</div>
+                            <div>Press ← and → to move between sentences.</div>
+                            <div class="auto-scroll">
+                                <input type="checkbox" class="checkbox" id="autoScroll" checked>
+                                <label for="autoScroll">Auto scroll</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content > div');
+            
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show the corresponding tab content
+                    tabContents[index].style.display = index === 0 ? 'block' : 'flex';
+                });
+            });
+            
+            // Close notification banner
+            const closeBtn = document.querySelector('.close-btn');
+            const banner = document.querySelector('.notification-banner');
+            
+            closeBtn.addEventListener('click', () => {
+                banner.style.display = 'none';
+            });
+            
+            // Play button toggle
+            const playBtn = document.querySelectorAll('.play-btn');
+            
+            playBtn.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.textContent === '▶') {
+                        this.textContent = '⏸';
+                    } else {
+                        this.textContent = '▶';
+                    }
+                });
+            });
+        });
+    </script>
+    <script th:src="@{../js/header.js}"></script>
 </body>
+</html>

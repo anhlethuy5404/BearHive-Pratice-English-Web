@@ -65,6 +65,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UserDictation> userDictations;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserFlashcard> userFlashcards;
     
     public User(String fullname, String email, String password, String role) {
         this.fullname = fullname;

@@ -34,34 +34,17 @@
             <section class="recommended-section">
                 <h2>Recommended for today</h2>
                 <div class="dictation-grid">
-                  <div class="dictation-card">
+                  <div th:each="dictation : ${dictations}" class="dictation-card">
                     <div class="card-content">
-                      <img th:src="@{/image/bg/bg2.png}" class="card-image">
-                      <h3>{{dictation.title}}</h3>
-                      <p class="time">{{dictation.duration}} minutes</p>
-                      <p class="description">{{dictation.description}}</p>
-                      <button class="start-btn">Start</button>
+                      <img th:src="${dictation.coveredImage}" class="card-image">
+                      <div class="difficulty easy" th:if="${dictation.difficulty == 'Easy'}">Easy</div>
+                      <div class="difficulty medium" th:if="${dictation.difficulty == 'Medium'}">Medium</div>
+                      <div class="difficulty hard" th:if="${dictation.difficulty == 'Hard'}">Hard</div>
+                      <h3 th:text="${dictation.title}"></h3>
+                      <p th:text="${dictation.description}" class="description"></p>
+                      <a th:href="@{/dictation/content}" class="start-btn">Start</a>
                     </div>
-                  </div>
-                  <!--bỏ đoạn dưới-->
-                  <div class="dictation-card">
-                    <div class="card-content">
-                      <img th:src="@{/image/bg/bg2.png}" class="card-image">
-                      <h3>{{dictation.title}}</h3>
-                      <p class="time">{{dictation.duration}} minutes</p>
-                      <p class="description">{{dictation.description}}</p>
-                      <button class="start-btn">Start</button>
-                    </div>
-                  </div>
-                  <div class="dictation-card">
-                    <div class="card-content">
-                      <img th:src="@{/image/bg/bg2.png}" class="card-image">
-                      <h3>{{dictation.title}}</h3>
-                      <p class="time">{{dictation.duration}} minutes</p>
-                      <p class="description">{{dictation.description}}</p>
-                      <button class="start-btn">Start</button>
-                    </div>
-                  </div>
+                  </div>                  
                 </div>
             </section>
 
@@ -69,7 +52,7 @@
                 <div class="section-header">
                   <h2>Most Popular Dictations</h2>
                   <div class="filters">
-                    <select [(ngModel)]="selectedSort" (change)="sortDictations()">
+                    <select>
                       <option value="learners">Most Learners</option>
                       <option value="rating">Top Rated</option>
                       <option value="completion">Highest Completion</option>
@@ -77,16 +60,16 @@
                   </div>
                 </div>
                 <div class="dictation-grid">
-                  <div *ngFor="let dictation of popularDictations" class="dictation-card" [ngClass]="dictation.level">
+                  <div class="dictation-card">
                     <div class="card-content">
-                      <img [src]="dictation.image" [alt]="dictation.title" class="card-image">
+                      <img [src]="dictation.image" class="card-image">
                       <h3>{{dictation.title}}</h3>
                       <div class="stats">
                         <span><i class="fa fa-users"></i> {{dictation.learners}}</span>
                         <span><i class="fa fa-star"></i> {{dictation.rating}}</span>
                       </div>
                       <div class="level-badge">{{dictation.level}}</div>
-                      <button class="learn-btn" (click)="startDictation(dictation)">Learn Now</button>
+                      <button class="learn-btn">Learn Now</button>
                     </div>
                   </div>
                 </div>

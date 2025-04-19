@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
-
-
-
 @Controller
 public class HomeController {
     @GetMapping("/home")
@@ -19,19 +16,10 @@ public class HomeController {
         return "redirect:/home"; 
     }
     
-    @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
-
-    @GetMapping("/flashcard")
-    public String flashcard() {
-        return "flashcard";
-    }
     
-    @GetMapping("/dictation")
-    public String dictation() {
-        return "dictation";
+    @GetMapping("/dictation/content")
+    public String dictationGetContent() {
+        return "dictation-content";
     }
     
 }

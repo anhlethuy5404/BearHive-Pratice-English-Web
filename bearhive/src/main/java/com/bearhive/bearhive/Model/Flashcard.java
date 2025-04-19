@@ -39,6 +39,9 @@ public class Flashcard {
     @OneToMany(mappedBy = "flashcard", fetch = FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL)
     private List<Word> words;
 
+    @OneToMany(mappedBy = "flashcard", fetch = FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL)
+    private List<UserFlashcard> userFlashcards;
+
     @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDate.now();

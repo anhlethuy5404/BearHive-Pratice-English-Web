@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BearHive - English Practice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/ielts.css}">
+</head>
+<body>
+    <div th:insert="~{header :: header}"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="tags">
+                    <span class="tag">#IELTS Academic</span>
+                    <span class="tag">#Listening</span>
+                </div>
+                <h1 class="title">IELTS Simulation Listening Test 1 <span class="difficulty-badge">Intermediate</span></h1>
+                
+                <div class="card-header-tabs">
+                    <div class="card-header-tab active">Test Information</div>
+                    <div class="card-header-tab">Answers/Transcript</div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="test-info">
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span>Duration: 40 minutes | 4 sections | 40 questions</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">👥</span>
+                        <span>944,115 people have practiced this test</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💬</span>
+                        <span>2,672 comments</span>
+                    </div>
+                </div>
+
+                <div class="test-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">8.5</div>
+                        <div class="stat-label">Average Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">75%</div>
+                        <div class="stat-label">Completion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4.8/5</div>
+                        <div class="stat-label">User Rating</div>
+                    </div>
+                </div>
+                
+                <p class="warning-text">Note: The test is converted to a scaled score (e.g., 990 for TOEIC or 9.0 for IELTS). Please select the FULL TEST mode.</p>
+                
+                <div class="nav-tabs">
+                    <div class="nav-tab active">Practice</div>
+                    <div class="nav-tab">Full Test</div>
+                    <div class="nav-tab">Discussion</div>
+                </div>
+                
+                <div class="alert alert-success">
+                    <span class="alert-icon">💡</span>
+                    <div>
+                        <strong>Pro Tip:</strong> Practicing each section individually and choosing an appropriate time limit will help you focus on solving questions correctly rather than feeling pressured to complete the entire test.
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Select the sections you want to practice</h2>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="recording1" class="checkbox-input">
+                        <div>
+                            <label for="recording1" class="checkbox-label">Recording 1 (10 questions)</label>
+                            <div class="badge-container">
+                                <span class="badge">#Listening Note/Form Completion</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="recording2" class="checkbox-input">
+                        <div>
+                            <label for="recording2" class="checkbox-label">Recording 2 (10 questions)</label>
+                            <div class="badge-container">
+                                <span class="badge">#Listening Table Completion</span>
+                                <span class="badge">#Listening Multiple Choice</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="recording3" class="checkbox-input">
+                        <div>
+                            <label for="recording3" class="checkbox-label">Recording 3 (10 questions)</label>
+                            <div class="badge-container">
+                                <span class="badge">#Listening Note/Form Completion</span>
+                                <span class="badge">#Listening Table Completion</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="recording4" class="checkbox-input">
+                        <div>
+                            <label for="recording4" class="checkbox-label">Recording 4 (10 questions)</label>
+                            <div class="badge-container">
+                                <span class="badge">#Listening Summary/Flow Chart Completion</span>
+                                <span class="badge">#Listening Matching</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="select-container">
+                    <label for="timeLimit" class="select-label">Time Limit (Leave blank for unlimited time)</label>
+                    <select id="timeLimit" class="select-input">
+                        <option value="">-- Select time limit --</option>
+                        <option value="10">10 minutes</option>
+                        <option value="20">20 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="40">40 minutes (standard)</option>
+                    </select>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-title">
+                        <span>Your progress on this test</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <span class="alert-icon">ℹ️</span>
+                    <div>Ready to take the full test? To achieve the best results, you should allocate 40 minutes for this test.</div>
+                </div>
+                
+                <div class="start-test-container">
+                    <a th:href="@{/ielts/test}" class="btn btn-primary btn-lg">START PRACTICE</a>
+                </div>
+                
+                <div class="timer-container">
+                    <span class="timer-icon">⏱️</span>
+                    <span class="timer-text">Average completion time: 38 minutes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const headerTabs = document.querySelectorAll('.card-header-tab');
+            headerTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    headerTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+            
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+            
+            // Checkbox functionality
+            const checkboxes = document.querySelectorAll('.checkbox-input');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    updateStartButton();
+                });
+            });
+            
+            function updateStartButton() {
+                const startButton = document.querySelector('.btn-primary');
+                const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+                
+                if (anyChecked) {
+                    startButton.classList.add('btn-accent');
+                    startButton.classList.remove('btn-primary');
+                } else {
+                    startButton.classList.add('btn-primary');
+                    startButton.classList.remove('btn-accent');
+                }
+            }
+        });
+    </script>
+    <script th:src="@{../js/header.js}"></script>
+</body>
+</html>
